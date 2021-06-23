@@ -1,0 +1,53 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block sstyle %}body{height: auto}{% endblock %}
+{% block header %}
+    <h3 class="masthead-brand">{{ title }}</h3>
+    <nav class="nav nav-masthead justify-content-center">
+    <a class="nav-link active" href="#">Главная</a>
+    <a class="nav-link" href="{% url 'about' %}">О нас</a>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <h1 class="cover-heading">Добро пожаловать</h1>
+    {% if tasks %}
+        <p class="lead">Вот мои невыполненные задачи.</p>
+        <hr color="white">
+        {% for el in tasks %}
+            {% if not el.done %}
+                <div>
+                    <h5>● {{ el.title }} ●</h5>
+                    <p>
+                        {{ el.text }} <br>
+                        
+                        <form action="complete/{{el.pk}}/" method="POST">
+                            <input class="btn btn-success" type="submit" value="Выполнить"/>
+                        </form>
+                    </p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    {% if tasks %}
+        <p class="lead">Вот мои выполненные задачи.</p>
+        <hr color="white">
+        {% for el in tasks %}
+            {% if el.done %}
+                <div>
+                    <h5>● {{ el.title }} ●</h5>
+                    <p>
+                        {{ el.text }}
+                    </p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>Нет задач</p>
+    {% endif %}
+    <p class="lead">
+        <a href="{% url 'create' %}" class="btn btn-lg btn-light">Добавить задачу</a>
+    </p>
+{% endblock %}
+

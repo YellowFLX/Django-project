@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+
+{% block title %}О нас{% endblock %}
+
+{% block header %}
+    <h3 class="masthead-brand">О нас</h3>
+    <nav class="nav nav-masthead justify-content-center">
+    <a class="nav-link" href="{% url 'app' %}">Главная</a>
+    <a class="nav-link active" href="#">О нас</a>
+    </nav>
+{% endblock %}
+{% block content %}
+    <h1 class="cover-heading"><a class="" href="/">yellow</a></h1>
+    <p class="lead">сделал этот TO-DO list на Django</p>
+    
+{% endblock %}

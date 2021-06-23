@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Добавить задачу{% endblock %}
+
+{% block header %}
+    <h3 class="masthead-brand">Добавить задачу</h3>
+    <nav class="nav nav-masthead justify-content-center">
+    <a class="nav-link" href="{% url 'app' %}">Главная</a>
+    <a class="nav-link active" href="{% url 'about' %}">О нас</a>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <h1 class="cover-heading">Добавить задачу</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.title }} <br>
+        {{ form.text}} <br>
+        {{ form.done}} <br>
+        <button type="submit" class="btn btn-lg btn-light">Добавить</button>
+        <span>{{ error }}</span>
+    </form>
+{% endblock %}

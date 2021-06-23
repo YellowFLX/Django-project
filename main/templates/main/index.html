@@ -1,0 +1,121 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+  
+      <meta charset="utf-8">
+      <meta name="robots" content="noodp">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	  
+      <title>yellow</title>
+	  
+      <link rel="shortcut icon" href="favicon.ico">
+	  <link href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" rel="stylesheet">	
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600|Raleway:300,400" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=Armata" rel="stylesheet">
+	  
+      <link rel="stylesheet" type="text/css" href="{% static "assets/css/plugins.css" %}">
+      <link rel="stylesheet" type="text/css" href="{% static "assets/css/style.css" %}">
+      
+  </head>
+
+  <body>
+
+      <div id="main">
+
+		  <div id="page-loader">
+			  <div class="spinner-container">
+				  <div class="css-spinner"></div>
+			  </div>
+		  </div>
+            
+		  <section id="hero" class="hero hero-1">
+
+			  <div class="front-content page-enter-animated">
+				<div class="controls show"><input style="width:100px;" class="volume-button input-range" oninput="SetVolume(this.value)" onchange="SetVolume(this.value)" type="range" id="vol-control" value="30" min="0" max="100" step="1"><i onclick="pMusic();" class="pause-button ti-control-pause"></i></div>
+			
+				  <div class="container-mid">
+				  
+					  <div class="cycle-wrapper">
+					  
+								<div id="cycle">
+									<div class="slide"><h1>yellow</h1></div>
+								</div>
+						  
+								<div class="cycle-wrapper">
+								  <div id="cycle">
+									  <a style="color:white;" target="_blank" href="https://steamcommunity.com/my/profile">hi</a><br>
+									  <a style="color:white;">you are listening to: </a><br>
+									  
+									  <a style="color:white;" target="_blank" href="https://open.spotify.com/track/3Yvk0ZLxMlt6ioasvdN6vB?si=phhcEWDGSe-kbB8LHTYPxA">lemon boy - cavetown</a>									  
+									  </a>
+								  </div>
+								</div>
+						  
+					  </div>
+
+
+				  	<div id="social" class="content cycle-wrapper">
+						<ul class="social-icons">
+							<li><a data-placement="bottom" title="Steam" style="border-radius:13px;" class="fab fa-steam" target="_blank" href="https://steamcommunity.com/id/yellowflx/"><div class="overlay"></div></a></li>
+							<li><a data-placement="bottom" title="My Discord" style="color:#1f6698;border-radius:13px;" class="fab fa-discord" href="javascript:alert('yellow#7638');"><div class="overlay"></div></a></li>
+							<li><a data-placement="bottom" title="Spotify" style="color:#1DB954;border-radius:13px;" class="fab fa-spotify" target="_blank" href="https://open.spotify.com/user/tc779wg6t4y24mqla7mlfjugw?si=OwWY9KnNSiWJgaryr-6ejQ"><div class="overlay"></div></a></li>
+							
+							<br><br><br>
+							<a style="color:white;">Django app</a><br><br>
+							<li><a data-placement="bottom" title="Django app" style="border-radius:13px;" class="fas fa-globe" href="{% url 'app' %}"><div class="overlay"></div></a></li>
+						</ul>
+					</div>
+				  
+				  </div>
+
+
+			  </div>
+
+			  <div class="background-content page-enter-animated">
+
+				  <div class="level-1">
+                  
+					  <div class="bg-overlay"></div>
+					  <div class="bg-pattern"></div>
+					  <div id="canvas"><canvas class="bg-effect layer" data-depth="0.2"></canvas></div>
+					  
+				  </div>	
+
+			  </div>
+
+		  </section>
+
+		</div>
+		
+		<audio id="audio" preload autoplay loop> <source type="audio/mp3" src="{% static "lemonboy.mp3" %}" media="(orientation:landscape)">
+		
+		<script>
+			var threejs = "{% static "assets/js/plugins/three.min.js" %}"
+		</script>  	
+     	<script type="text/javascript" src="{% static "assets/js/main.js" %}"></script>  
+		<script type="text/javascript">
+		var vid = document.getElementById("audio"); 
+
+		function pMusic() { 
+			vid.paused ? vid.play() : vid.pause();
+		} 
+		window.SetVolume = function(val)
+		{
+			var player = document.getElementById('audio');
+			player.volume = val / 100;
+		}
+		
+		var audio = document.querySelector('audio');
+		window.addEventListener('touchstart', function audioStart() {
+		  audio.play();
+		  this.removeEventListener('touchstart', audioStart);
+		});
+		SetVolume(5)
+		var modes = ["waves","sphere","mesh","space","glitch"];
+		var option_hero_background_mode = modes[Math.floor(Math.random()*modes.length)];
+		console.log(option_hero_background_mode)
+		</script>
+  </body>
+
+</html>
